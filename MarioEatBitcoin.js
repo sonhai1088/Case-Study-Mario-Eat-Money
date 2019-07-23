@@ -20,6 +20,11 @@ let eatScore = new Audio();
 soundtrack.src = "sounds/Chung-Ta-Khong-Thuoc-Ve-Nhau-Son-Tung-M-TP.mp3"
 jump.src = "sounds/jump.mp3";
 eatScore.src = "sounds/score.mp3";
+// window.onload = function(){
+//     soundtrack.loop();
+//     soundtrack.play();
+// }
+
 // ấn key down - up
 let jumpY = 30;
 document.addEventListener("keydown",moveUp);
@@ -67,12 +72,12 @@ function draw(){
 
     // setInterval(time++, 1)
     soundtrack.play();
-    if (time < 10000 && score < 100){
-        time++;
+    if (time < 200 && score < 100){
+        time+= 0.01;
         ctx.drawImage(mario,xPosition,yPosition); // vẽ mario
         ctx.fillStyle = "white";
         ctx.font = "20px Verdana";
-        ctx.fillText("Score : "+score + " Time: " + time,10,canvas.height-5);
+        ctx.fillText("Score : "+score + " Time: " + time.toFixed(0),10,canvas.height-5);
     } else {
         alert("GAME OVER" + " Score: " + score + " Time: " + time);
     }
