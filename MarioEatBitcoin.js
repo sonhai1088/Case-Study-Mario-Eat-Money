@@ -12,6 +12,7 @@ bitcoin.src = "images/btc-image.png";
 let xPosition = 80;
 let yPosition = 80;
 let score = 0;
+let time = 0;
 // File âm thanh
 let soundtrack = new Audio();
 let jump = new Audio();
@@ -62,13 +63,24 @@ function draw(){
             eatScore.play();
         }
     }
+
+
+    // setInterval(time++, 1)
     soundtrack.play();
-    ctx.drawImage(mario,xPosition,yPosition); // vẽ mario
-    ctx.fillStyle = "white";
-    ctx.font = "20px Verdana";
-    ctx.fillText("Score : "+score,10,canvas.height-5);
+    if (time < 10000 && score < 100){
+        time++;
+        ctx.drawImage(mario,xPosition,yPosition); // vẽ mario
+        ctx.fillStyle = "white";
+        ctx.font = "20px Verdana";
+        ctx.fillText("Score : "+score + " Time: " + time,10,canvas.height-5);
+    } else {
+        alert("GAME OVER" + " Score: " + score + " Time: " + time);
+    }
+
+
     requestAnimationFrame(draw);
 }
+
 draw();
 
 
