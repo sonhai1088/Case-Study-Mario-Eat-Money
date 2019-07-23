@@ -26,12 +26,13 @@ eatScore.src = "sounds/score.mp3";
 // }
 
 // ấn key down - up
-let jumpY = 30;
+let jumpY = 60;
 document.addEventListener("keydown",moveUp);
 function moveUp(){
+    if (yPosition > 60){
     yPosition = yPosition - jumpY;
     jump.play();
-
+    }
 }
 document.addEventListener("keyup", moveDown);
 function moveDown() {
@@ -77,7 +78,7 @@ function draw(){
         ctx.drawImage(mario,xPosition,yPosition); // vẽ mario
         ctx.fillStyle = "white";
         ctx.font = "20px Verdana";
-        ctx.fillText("Score : "+score + " Time: " + time.toFixed(0),10,canvas.height-5);
+        ctx.fillText("Score : "+score + " Time: " + time.toFixed(2),10,canvas.height-5);
     } else {
         alert("GAME OVER" + " Score: " + score + " Time: " + time);
     }
